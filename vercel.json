@@ -1,21 +1,23 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "buildCommand": "npm install && npm run build",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist/counter-app",
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "status": 200
+      "src": "^/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "^/.*\\.js$",
+      "dest": "/$0"
+    },
+    {
+      "src": "^/.*\\.css$",
+      "dest": "/$0"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
     }
-  ],
-  "env": {
-    "NODE_VERSION": "18.x"
-  }
+  ]
 }
