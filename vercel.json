@@ -1,4 +1,29 @@
 {
+  "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/counter-app"
+  "outputDirectory": "dist/counter-app",
+  "framework": "angular",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/counter-app"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/.*\\.(js|css|png|jpg|jpeg|gif|svg)$",
+      "dest": "/$0"
+    },
+    {
+      "src": "/.*",
+      "dest": "/index.html"
+    }
+  ]
 }
