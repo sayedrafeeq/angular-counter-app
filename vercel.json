@@ -1,44 +1,28 @@
 {
+  "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/counter-app",
-  "cleanUrls": false,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/index.html",
-      "destination": "/index.html"
+      "src": "api/index.js",
+      "use": "@vercel/node"
     },
     {
-      "source": "/:path*",
-      "destination": "/index.html"
+      "src": "dist/counter-app/**",
+      "use": "@vercel/static"
     }
   ],
-  "headers": [
+  "routes": [
     {
-      "source": "/index.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
     },
     {
-      "source": "/assets/:path*",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "src": "/(.+)",
+      "dest": "/api/index.js"
     },
     {
-      "source": "/:path*\\.(js|css)$",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "src": "/",
+      "dest": "/api/index.js"
     }
   ]
 }
