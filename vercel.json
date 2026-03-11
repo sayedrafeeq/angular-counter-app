@@ -3,12 +3,11 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/counter-app"
-      }
+      "use": "@vercel/node"
     }
   ],
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "dist/counter-app",
   "routes": [
     {
       "src": "/(.*)",
