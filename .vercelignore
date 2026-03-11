@@ -10,3 +10,4 @@ tsconfig.app.json
 tsconfig.spec.json
 karma.conf.js
 .angular
+.github
