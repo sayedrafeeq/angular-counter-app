@@ -1,7 +1,9 @@
 {
   "version": 2,
+  "framework": "angular",
   "buildCommand": "npm run build",
   "outputDirectory": "dist/counter-app",
+  "installCommand": "npm install",
   "routes": [
     {
       "src": "/(.*)",
